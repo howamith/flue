@@ -1,0 +1,18 @@
+:root {
+  /* Application colours */
+  --background-off-white: #f2f6f7;
+  --main-window-white: #ffffff;
+  --control-colour: #0eace8;
+  --border-grey: #dddddd;
+
+  /* Sizes */
+  --control-font-size: 16px;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0px 0px 1em;
+  background-color: var(--background-off-white);
+}
