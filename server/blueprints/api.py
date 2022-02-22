@@ -19,7 +19,7 @@ def start_task() -> ResponseValue:
 @api.get("/task_status/<task_id>")
 def task_status(task_id: str) -> ResponseValue:
     task = tasks.long_task.AsyncResult(task_id)
-    if task.ready() and task.successful():
+    if task.successful():
         response = task.get()
     else:
         status = (

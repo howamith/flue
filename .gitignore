@@ -1,4 +1,5 @@
 client/node_modules/
 client/www/
+logs/
 __pycache__/
 venv/

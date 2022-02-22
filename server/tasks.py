@@ -2,16 +2,16 @@
 from celery import Celery
 
 # Standard library modules.
+from os import environ
 import random
 import time
 from typing import Dict
 
 celery = Celery(
     "tasks",
-    backend="redis://localhost:6379/0",
-    broker="redis://localhost:6379/0",
+    backend=environ.get("CELERY_BROKER_URL", "redis://localhost:6379/0"),
+    broker=environ.get("CELERY_RESULT_BACKEND", "redis://localhost:6379/0"),
 )
-# celery.conf.broker_url = "redis://localhost:6379/0"
 
 
 @celery.task(bind=True)

@@ -15,11 +15,35 @@ Flue = Flask + Vue.js
 - [ ] Server tests
 - [ ] Client tests
 - [ ] Aesthetics
-- [ ] Containerize with Docker
 - [ ] Add controls/ components to add new tasks
 
 
 ## Running ##
+
+Flue can either be run by starting the required services manually or via Docker.
+Using Docker is easier, however it is more convenient during development to
+start the services manually, as this saves having to keep rebuilding the
+containers.
+
+### Running via Docker ###
+
+Build and spin up the containers:
+
+```bash
+docker-compose up -d --build
+```
+
+Once you've built the containers once, you can spin them up without having to
+build them every time:
+
+```bash
+docker-compose up -d
+```
+
+Note that if you make changes to any of the source then you need to rebuild the
+containers for those changes to take effect.
+
+### Running Manually ###
 
 Start `redis` in a Docker container:
 
