@@ -1,5 +1,5 @@
 <template>
-  <tr>
+  <tr v-bind:class="{ failed: this.failed }">
     <td>{{ name }}</td>
     <td><input type="number" v-model="time" /></td>
     <td>{{ state }}</td>
@@ -21,6 +21,7 @@ export default {
     return {
       time: 3000, // milliseconds.
       state: "Idle",
+      failed: false,
     };
   },
   methods: {
@@ -39,10 +40,12 @@ export default {
       console.log(`response: ${JSON.stringify(response)}`);
       this.state = response.status;
 
-      if (response.state === "PROGRESS") {
+      if (!("result" in response)) {
         setTimeout(() => {
           this.getTaskStatus(task_id);
         }, 1000);
+      } else {
+        this.failed = !response.result;
       }
     },
   },
@@ -81,5 +84,9 @@ button:hover {
 .button.disabled {
   opacity: 0.3;
   pointer-events: none;
+}
+
+.failed {
+  background: red;
 }
 </style>

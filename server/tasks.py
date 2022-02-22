@@ -61,6 +61,6 @@ def long_task(self, name: str, duration: int) -> Dict[str, str]:
     return {
         "current": num_iters,
         "total": num_iters,
-        "status": "success" if random.choice(results) else "failure",
-        "result": 42,
+        "status": "Finished",
+        "result": random.choice(results),
     }
