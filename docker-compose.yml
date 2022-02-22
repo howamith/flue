@@ -7,8 +7,6 @@ services:
     ports:
       - 5000:5000
     command: flask run --host=0.0.0.0
-    volumes:
-      - .:/usr/src/app
     environment:
       - FLASK_APP=server
       - CELERY_BROKER_URL=redis://redis:6379/0
@@ -20,7 +18,7 @@ services:
     build: .
     command: celery --app server.tasks.celery worker --loglevel=info --logfile=logs/celery.log
     volumes:
-      - .:/usr/src/app
+      - ./logs:/usr/src/app/logs
     environment:
       - CELERY_BROKER_URL=redis://redis:6379/0
       - CELERY_RESULT_BACKEND=redis://redis:6379/0
